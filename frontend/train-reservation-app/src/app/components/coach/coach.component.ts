@@ -1,4 +1,4 @@
-import { Component, EventEmitter, Output } from '@angular/core';
+import { Component, EventEmitter, Input, Output } from '@angular/core';
 import { BookingDto } from 'projects/train-reservation-app/src/booking-dto';
 import { BookingService } from '../../services/booking.service';
 import { Coach } from 'projects/train-reservation-app/src/coach';
@@ -14,7 +14,7 @@ export class CoachComponent {
 
 	constructor(private bookingService: BookingService, private coachService: CoachService) { }
 
-	coach!: Coach;
+	@Input() coach!: Coach;
 
 	bookingMode = false;
 

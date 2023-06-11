@@ -21,10 +21,9 @@ export class CoachService {
 
 	createNewCoach(): Observable<any> {
 		const headers = new HttpHeaders({
-			'authorization': '',
 			'content-type': 'application/json'
 		})
-		return this.http.post(this.url + "coaches", { headers });
+		return this.http.post(this.url + "coaches", {}, { headers });
 	}
 
 
