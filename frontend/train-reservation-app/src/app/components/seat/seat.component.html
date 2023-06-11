@@ -1,0 +1,13 @@
+<mat-card class="example-card" [style.background]="seat.isBooked ? 'pink' : 'lightgreen'">
+	<mat-card-header>
+		<mat-card-title-group>
+			<mat-card-title> Seat No.: {{seat.seatNumber}}</mat-card-title>
+
+			<mat-card-subtitle [style.color]="'purple'">ID : {{seat.seatId}}
+				<img mat-card-sm-image
+					[src]="seat.isBooked ? '../../../assets/reserved.png' : '../../../assets/available.png'">
+			</mat-card-subtitle>
+
+		</mat-card-title-group>
+	</mat-card-header>
+</mat-card>

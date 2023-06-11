@@ -1,0 +1,36 @@
+.coachInfo {
+  display: flex;
+  justify-content: space-around;
+  color: white;
+  background-color: rgb(0, 0, 0);
+  position: sticky;
+  top: 0;
+  padding: 2%;
+  z-index: 1; /* Ensure it has a higher z-index than other elements */
+}
+.coachInfo div {
+  display: flex;
+  justify-content: space-around;
+  width: 70%;
+}
+.coachInfo .bookButton {
+  background-color: green;
+  color: white;
+  border-radius: 10px;
+  border: none;
+  font-weight: bold;
+  cursor: pointer;
+}
+.coachInfo .bookButton:hover {
+  background-color: yellowgreen;
+}
+.coachInfo .active {
+  background-color: red;
+}
+.coachInfo .active:hover {
+  background-color: coral;
+}
+
+app-input {
+  padding: 0% 5%;
+}/*# sourceMappingURL=coach.component.css.map */

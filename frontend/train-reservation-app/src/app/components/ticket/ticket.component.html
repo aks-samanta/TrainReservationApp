@@ -1,0 +1,28 @@
+<mat-card class="example-card">
+	<mat-card-header>
+		<mat-card-title-group>
+			<mat-card-title>
+				<h1 class="title">
+					Ticket Confirmed!!
+				</h1>
+				<div>
+					Ticket Id : {{ticket.ticketId}}
+				</div>
+
+			</mat-card-title>
+			<mat-card-subtitle>
+				<p>Booking Date: {{ticket.bookingDate | date:'long'}}</p>
+				<p>Coach Number : {{ticket.coach.coachId}}</p>
+				<p>Number Of Seats Booked : {{ticket.reservedSeats.length}}</p>
+			</mat-card-subtitle>
+			<img mat-card-sm-image src="../../../assets/confirmed.png">
+		</mat-card-title-group>
+	</mat-card-header>
+	<mat-card-content>
+		<mat-grid-list cols="4" rowHeight="150px">
+			<mat-grid-tile *ngFor="let seat of ticket.reservedSeats">
+				<app-seat [seat]="seat"></app-seat>
+			</mat-grid-tile>
+		</mat-grid-list>
+	</mat-card-content>
+</mat-card>
