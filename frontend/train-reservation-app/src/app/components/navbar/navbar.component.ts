@@ -12,9 +12,11 @@ import { CoachService } from '../../services/coach.service';
 })
 export class NavbarComponent {
 	constructor(public dialog: MatDialog, private coachService: CoachService) { }
-	@Input() coach!: Coach;
 
-	@Output() newCoachEmitter: EventEmitter<Coach> = new EventEmitter<Coach>();
+	@Input() coach!: Coach;
+	@Output() coachChange: EventEmitter<Coach> = new EventEmitter<Coach>();
+
+	isCreatingNewCoach = false;
 
 	openERD() {
 		const dialogRef = this.dialog.open(ErdDialogComponent);
@@ -25,18 +27,20 @@ export class NavbarComponent {
 	}
 
 	createNewCoach() {
+		this.isCreatingNewCoach= true;
 		this.coachService.createNewCoach().subscribe({
 			next: (res: any) => {
-				this.coach = res;
-				this.newCoachEmitter.emit(this.coach);
-				alert("new coach has been created in the database with new empty seats, please refresh to view the new coach...")
+				const newCoach: Coach = res;
+				this.coachChange.emit(newCoach);
+				alert("New coach has been created in the database with new empty seats. Please refresh to view the new coach.");
 			},
 			error: (err: any) => {
 				console.log(err);
 			},
 			complete: () => {
-				console.log("create new coach completed");
+				this.isCreatingNewCoach= false;
+				console.log("Create new coach completed");
 			}
-		})
+		});
 	}
 }

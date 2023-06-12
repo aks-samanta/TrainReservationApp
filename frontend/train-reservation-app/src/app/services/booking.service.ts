@@ -10,7 +10,7 @@ export class BookingService {
 
 	constructor(private http: HttpClient) { }
 
-	url = "http://localhost:8899/";
+	url = "https://trainreservationappbackend.up.railway.app/";
 
 
 	bookTicket(bookingDto: BookingDto): Observable<any> {

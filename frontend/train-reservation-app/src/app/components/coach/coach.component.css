@@ -1,36 +1,27 @@
-.coachInfo {
+.button-container {
   display: flex;
-  justify-content: space-around;
-  color: white;
-  background-color: rgb(0, 0, 0);
-  position: sticky;
-  top: 0;
-  padding: 2%;
-  z-index: 1; /* Ensure it has a higher z-index than other elements */
+  justify-content: flex-end;
+  margin-bottom: 10px; /* Add margin-bottom to create some space between buttons and grid */
 }
-.coachInfo div {
-  display: flex;
-  justify-content: space-around;
-  width: 70%;
-}
-.coachInfo .bookButton {
-  background-color: green;
+
+.bookButton {
   color: white;
-  border-radius: 10px;
-  border: none;
-  font-weight: bold;
   cursor: pointer;
+  margin: 10px; /* Add margin-left to create some space between buttons */
 }
-.coachInfo .bookButton:hover {
+
+.bookButton:hover {
   background-color: yellowgreen;
 }
-.coachInfo .active {
-  background-color: red;
-}
-.coachInfo .active:hover {
+
+.active:hover {
   background-color: coral;
 }
 
 app-input {
   padding: 0% 5%;
+}
+
+.margin {
+  margin: auto;
 }/*# sourceMappingURL=coach.component.css.map */

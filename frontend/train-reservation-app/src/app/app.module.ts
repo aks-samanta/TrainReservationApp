@@ -10,7 +10,11 @@ import { MatGridListModule } from '@angular/material/grid-list';
 import { MatCardModule } from '@angular/material/card';
 import { MatDialogModule } from '@angular/material/dialog';
 import { MatButtonModule } from '@angular/material/button';
-import { MatMenuModule } from '@angular/material/menu';
+import { MatChipsModule } from '@angular/material/chips';
+import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
+import { MatTooltipModule } from '@angular/material/tooltip';
+import { MatSnackBarModule } from '@angular/material/snack-bar';
+
 
 import { AppComponent } from './app.component';
 import { NavbarComponent } from './components/navbar/navbar.component';
@@ -45,7 +49,10 @@ import { ErdDialogComponent } from './components/navbar/erd-dialog/erd-dialog.co
 		MatCardModule,
 		MatDialogModule,
 		MatButtonModule,
-		MatMenuModule
+		MatProgressSpinnerModule,
+		MatChipsModule,
+		MatTooltipModule,
+		MatSnackBarModule
 	],
 	providers: [
 	],

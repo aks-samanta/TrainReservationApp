@@ -9,7 +9,7 @@ export class CoachService {
 
 	constructor(private http: HttpClient) { }
 
-	url = "http://localhost:8899/"
+	url = "https://trainreservationappbackend.up.railway.app/"
 
 
 	getCoach(): Observable<any> {

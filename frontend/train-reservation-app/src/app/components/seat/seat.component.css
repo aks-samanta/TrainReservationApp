@@ -1,4 +1,10 @@
 .example-card {
   width: 100%;
   margin: auto;
+  cursor: pointer;
+}
+
+.example-card:hover img {
+  transform: scale(1.4);
+  transition: transform 0.2s ease-out;
 }/*# sourceMappingURL=seat.component.css.map */

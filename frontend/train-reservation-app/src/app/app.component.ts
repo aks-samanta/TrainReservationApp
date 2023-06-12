@@ -1,6 +1,5 @@
-import { Component, Input } from '@angular/core';
+import { Component } from '@angular/core';
 import { Coach } from '../coach';
-import { NgModel } from '@angular/forms';
 
 @Component({
 	selector: 'app-root',
@@ -9,5 +8,11 @@ import { NgModel } from '@angular/forms';
 })
 export class AppComponent {
 	title = 'TrainReservationApp';
-	@Input() coach!: Coach;
+	coach: Coach = {
+		coachId: 0,
+		totalSeats: 0,
+		availableSeats: 0,
+		seats: []
+	};
+
 }

@@ -1,24 +1,21 @@
-<div class="coachInfo">
-	<button mat-raised-button [matMenuTriggerFor]="menu">Coach Info</button>
-	<mat-menu #menu="matMenu">
-	  <button mat-menu-item>Coach ID: {{coach.coachId}}</button>
-	  <button mat-menu-item>Total Seats: {{coach.totalSeats}}</button>
-	  <button mat-menu-item>Available Seats: {{coach.availableSeats}}</button>
-	</mat-menu>
-	
-
-
-	<button class="bookButton" (click)="bookingMode = !bookingMode" [ngClass]="{'active': bookingMode}">
+<div class="button-container">
+	<button mat-raised-button class="bookButton" [color]="!bookingMode ? 'accent' : 'warn'" (click)="bookingMode = !bookingMode"
+		[ngClass]="{'active': bookingMode}">
 		{{ bookingMode ? 'Cancel' : 'Book Ticket' }}
 	</button>
 
+
+	<button *ngIf="ticket" mat-raised-button class="bookButton" [color]="!showTicket ? 'accent' : 'warn'" (click)="showTicket = !showTicket"
+		[ngClass]="{'active': showTicket}">
+		{{ showTicket ? 'Collapse Ticket' : 'Show Ticket' }}
+	</button>
 </div>
 
 <app-input *ngIf="bookingMode" [coachId]="coach.coachId" (onBookEmitter)="onBook($event)"></app-input>
+<mat-progress-spinner *ngIf="isBooking" class="margin" color="accent" mode="indeterminate"></mat-progress-spinner>
+<app-ticket *ngIf="showTicket && !isBooking" [ticket]="ticket"></app-ticket>
 
-<app-ticket *ngIf="showTicket" [ticket]="ticket"></app-ticket>
-
-<mat-grid-list cols="7" >
+<mat-grid-list cols="7">
 	<mat-grid-tile *ngFor="let seat of coach.seats">
 		<app-seat [seat]="seat"></app-seat>
 	</mat-grid-tile>

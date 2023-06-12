@@ -1,5 +1,3 @@
-<app-navbar [(ngModel)]="coach"></app-navbar>
-
-<app-coach [coach]="coach"></app-coach>
-
+<app-navbar *ngIf="coach != undefined" [(coach)]="coach"></app-navbar>
+<app-coach [(coach)]="coach"></app-coach>
 <app-footer></app-footer>

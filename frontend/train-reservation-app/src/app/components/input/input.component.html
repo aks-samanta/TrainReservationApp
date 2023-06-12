@@ -1,26 +1,24 @@
-
-<h2 [style.color]="'white'">Booking Details:</h2>
+<h2>Booking Details:</h2>
 <form class="form" (ngSubmit)="onBook()">
 	<mat-form-field class="full-width">
 
 		<mat-label>Number of Seats</mat-label>
 
-		<input type="number"  matInput color="white" [formControl]="noOfSeatsFormControl" [(ngModel)]="noOfSeats"
+		<input type="number" matInput  [formControl]="noOfSeatsFormControl" [(ngModel)]="noOfSeats"
 			placeholder="Number of seats you want to book">
 
-			<mat-error *ngIf="noOfSeatsFormControl.hasError('required')">
-				Number of seats is <strong>required</strong>
-			</mat-error>
+		<mat-error *ngIf="noOfSeatsFormControl.hasError('required')">
+			Number of seats is <strong>required</strong>
+		</mat-error>
 
-			<mat-error *ngIf="noOfSeatsFormControl.hasError('min')">
-				Please choose a valid number of seats to book!
-			</mat-error>
+		<mat-error *ngIf="noOfSeatsFormControl.hasError('min')">
+			Please choose a valid number of seats to book!
+		</mat-error>
 
-			<mat-error *ngIf="noOfSeatsFormControl.hasError('max')">
-				Sorry, you cannot book more than 7 tickets at a time!
-			</mat-error>
+		<mat-error *ngIf="noOfSeatsFormControl.hasError('max')">
+			Sorry, you cannot book more than 7 tickets at a time!
+		</mat-error>
 	</mat-form-field>
-
-	<button mat-button type="submit">Book</button>
+	<button mat-raised-button [color]="'accent'" type="submit" matTooltip="Closest possible seats will be booked">Book</button>
 
 </form>
