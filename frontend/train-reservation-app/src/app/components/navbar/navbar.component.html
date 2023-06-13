@@ -1,9 +1,8 @@
 <mat-toolbar color="accent" class="nav">
-
 	<span>Train Reservation App</span>
 	<span class="example-spacer"></span>
 
-	<mat-chip-listbox aria-label="Coach Info">
+	<mat-chip-listbox aria-label="Coach Info" class="coach-info">
 		<mat-chip>
 			Coach ID: {{coach.coachId}}
 		</mat-chip>
@@ -16,11 +15,9 @@
 	</mat-chip-listbox>
 
 	<button mat-raised-button [color]="'primary'" (click)="openERD()">ER Diagram</button>
-	<button *ngIf="coach.availableSeats < 7" mat-raised-button [color]="'primary'" (click)="createNewCoach()">Create New
-		Coach</button>
+	<button *ngIf="coach.availableSeats < 7" mat-raised-button [color]="'primary'" (click)="createNewCoach()">Create New Coach</button>
 
 	<div *ngIf="isCreatingNewCoach" class="overlay">
-		<mat-progress-spinner class="align" color="warn" mode="indeterminate">
-		</mat-progress-spinner>
+		<mat-progress-spinner class="align" color="warn" mode="indeterminate"></mat-progress-spinner>
 	</div>
 </mat-toolbar>

@@ -20,12 +20,12 @@ export class CoachComponent {
 
 	bookingMode = false;
 	isBooking = false;
-
+	isReseting = false;
 	bookingDto?: BookingDto;
 
 	showTicket = false;
 
-	ticket!: Ticket;
+	ticket?: Ticket;
 
 	ngOnInit(): void {
 		this.coachService.getCoach().subscribe({
@@ -72,6 +72,38 @@ export class CoachComponent {
 			}
 		})
 	}
+
+
+	resetCoach() {
+		this.isReseting = true;
+		this.coachService.resetCoach(this.coach.coachId).subscribe({
+			next: (res) => {
+				if (res.status == 400) {
+					console.log(res);
+					this.isReseting = false;
+					this.openSnackBar(res.detail, "OK");
+				} else {
+					this.coach = res;
+					this.coachChange.emit(this.coach);
+					console.log(res);
+					this.isReseting = false;
+					this.ticket = undefined;
+					this.showTicket = false;
+				}
+
+			},
+			error: (err) => {
+				console.log(err);
+				this.isReseting = false;
+				this.openSnackBar(err.message, "OK");
+			},
+			complete: () => {
+				console.log("complete");
+				this.isReseting = false;
+			}
+		})
+	}
+
 
 	openSnackBar(message: string, action: string) {
 		this._snackBar.open(message, action, {

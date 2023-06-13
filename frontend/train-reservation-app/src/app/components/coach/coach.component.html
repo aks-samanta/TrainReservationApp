@@ -9,11 +9,16 @@
 		[ngClass]="{'active': showTicket}">
 		{{ showTicket ? 'Collapse Ticket' : 'Show Ticket' }}
 	</button>
+
+	<button *ngIf="coach.availableSeats < 80" mat-raised-button [color]="'warn'" (click)="resetCoach()">Reset Coach</button>
+	<div *ngIf="isReseting" class="overlay">
+		<mat-progress-spinner class="align" color="warn" mode="indeterminate"></mat-progress-spinner>
+	</div>
 </div>
 
 <app-input *ngIf="bookingMode" [coachId]="coach.coachId" (onBookEmitter)="onBook($event)"></app-input>
 <mat-progress-spinner *ngIf="isBooking" class="margin" color="accent" mode="indeterminate"></mat-progress-spinner>
-<app-ticket *ngIf="showTicket && !isBooking" [ticket]="ticket"></app-ticket>
+<app-ticket *ngIf="showTicket && !isBooking" [ticket]="ticket!"></app-ticket>
 
 <mat-grid-list cols="7">
 	<mat-grid-tile *ngFor="let seat of coach.seats">

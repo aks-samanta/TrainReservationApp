@@ -1,35 +1,40 @@
-.example-spacer {
-	flex: 1 1 auto;
+.mat-toolbar.nav {
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
 }
+
+.coach-info {
+	flex-grow: 1;
+}
+
+button {
+	margin-left: 8px;
+}
+
 .overlay {
 	position: fixed;
 	top: 0;
 	left: 0;
 	width: 100%;
 	height: 100%;
-	z-index: 9999;
-	background-color: rgba(0, 0, 0, 0.5); /* Use rgba to set a background color with opacity */
-	backdrop-filter: blur(5px); /* Use backdrop-filter for a blur effect */
+	background-color: rgba(0, 0, 0, 0.5);
 	display: flex;
-	align-items: center;
 	justify-content: center;
+	align-items: center;
+	z-index: 999;
 }
 
-.spinner {
-	position: relative;
-	z-index: 1;
+.align {
+	align-self: center;
 }
 
-.nav {
-	display: flex;
-	justify-content: space-around;
-	position: sticky;
-	box-shadow: 2px black;
-	top: 0;
-	padding: 2%;
-	z-index: 1;
+.example-spacer {
+	flex-grow: 1;
 }
 
-button {
-	margin: 5px;
+@media (max-width: 600px) {
+	.example-spacer {
+		display: none;
+	}
 }

@@ -32,7 +32,6 @@ export class NavbarComponent {
 			next: (res: any) => {
 				const newCoach: Coach = res;
 				this.coachChange.emit(newCoach);
-				alert("New coach has been created in the database with new empty seats. Please refresh to view the new coach.");
 			},
 			error: (err: any) => {
 				console.log(err);

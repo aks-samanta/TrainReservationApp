@@ -2,14 +2,15 @@
 	display: flex;
 	justify-content: flex-end;
 	margin-bottom: 10px; /* Add margin-bottom to create some space between buttons and grid */
-  }
-  
-  .bookButton {
+}
+
+.bookButton {
 	color: white;
+}
+button {
+	margin: 10px;
 	cursor: pointer;
-	margin: 10px; /* Add margin-left to create some space between buttons */
-  }
-  
+}
 .bookButton:hover {
 	background-color: yellowgreen;
 }
@@ -23,4 +24,21 @@ app-input {
 }
 .margin {
 	margin: auto;
+}
+.overlay {
+	position: fixed;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
+	background-color: rgba(0, 0, 0, 0.5);
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	z-index: 999;
+	backdrop-filter: blur(8px);
+}
+
+.align {
+	align-self: center;
 }
