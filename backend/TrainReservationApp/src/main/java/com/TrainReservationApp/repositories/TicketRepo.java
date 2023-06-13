@@ -2,6 +2,7 @@ package com.TrainReservationApp.repositories;
 
 import org.springframework.data.jpa.repository.JpaRepository;
 
+import com.TrainReservationApp.models.Coach;
 import com.TrainReservationApp.models.Ticket;
 
 /**
@@ -9,4 +10,6 @@ import com.TrainReservationApp.models.Ticket;
  * It extends the JpaRepository interface, which provides basic CRUD operations for the entity.
  */
 public interface TicketRepo extends JpaRepository<Ticket, Integer> {
+
+	void deleteAllByCoach(Coach coach);
 }

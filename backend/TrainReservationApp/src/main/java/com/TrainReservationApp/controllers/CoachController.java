@@ -5,9 +5,11 @@ import com.TrainReservationApp.services.CoachServices;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.CrossOrigin;
+import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -49,5 +51,18 @@ public class CoachController {
     public ResponseEntity<CoachDto> createNewCoach() {
         CoachDto coachDto = coachServices.createNewCoach();
         return ResponseEntity.ok(coachDto);
+    }
+    
+    
+    /**
+     * DELETE endpoint to reset a coach.
+     * Accepts the coachId as a path variable.
+     * Deletes all tickets and resets seat bookings for the coach.
+     * Returns ResponseEntity with a success message.
+     */
+    @PutMapping("/{coachId}/reset")
+    public ResponseEntity<CoachDto> resetCoach(@PathVariable Integer coachId) {
+        
+        return ResponseEntity.ok(coachServices.resetCoach(coachId));
     }
 }

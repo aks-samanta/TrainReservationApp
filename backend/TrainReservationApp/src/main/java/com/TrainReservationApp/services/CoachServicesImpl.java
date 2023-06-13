@@ -6,6 +6,7 @@ import java.util.stream.Collectors;
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import com.TrainReservationApp.dtos.CoachDto;
 import com.TrainReservationApp.dtos.SeatDto;
@@ -14,6 +15,7 @@ import com.TrainReservationApp.models.Coach;
 import com.TrainReservationApp.models.Seat;
 import com.TrainReservationApp.repositories.CoachRepo;
 import com.TrainReservationApp.repositories.SeatRepo;
+import com.TrainReservationApp.repositories.TicketRepo;
 
 @Service
 public class CoachServicesImpl implements CoachServices {
@@ -26,6 +28,9 @@ public class CoachServicesImpl implements CoachServices {
 	
 	@Autowired
 	private ModelMapper modelMapper;
+	
+	@Autowired
+	private TicketRepo ticketRepo;
 
 	/**
 	 * Retrieves the coach details.
@@ -86,4 +91,26 @@ public class CoachServicesImpl implements CoachServices {
 
 		return coachDto;
 	}
+	
+
+	// ...
+
+	@Transactional
+	@Override
+	public CoachDto resetCoach(Integer coachId) {
+	    Coach coach = coachRepo.findById(coachId)
+	            .orElseThrow(() -> new CoachException("Coach not found with coach ID: " + coachId));
+
+	    ticketRepo.deleteAllByCoach(coach);
+
+	    for (Seat seat : coach.getSeats()) {
+	        seat.setIsBooked(false);
+	        seatRepo.save(seat);
+	        coach.setAvailableSeats(coach.getAvailableSeats()+1);
+	    }
+
+	    return modelMapper.map(coachRepo.save(coach), CoachDto.class);
+	}
+
+
 }

@@ -23,7 +23,7 @@ public class Ticket {
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	private Integer ticketId;
 
-	@OneToMany(cascade = CascadeType.ALL)
+	@OneToMany
 	private List<Seat> reservedSeats;
 
 	private Date bookingDate;

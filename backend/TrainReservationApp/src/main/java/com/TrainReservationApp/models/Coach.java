@@ -11,9 +11,6 @@ import jakarta.persistence.Id;
 import jakarta.persistence.OneToMany;
 import lombok.Data;
 
-/**
- * The Coach entity represents a train coach in the Train Reservation Application.
- */
 @Entity
 @Data
 public class Coach {

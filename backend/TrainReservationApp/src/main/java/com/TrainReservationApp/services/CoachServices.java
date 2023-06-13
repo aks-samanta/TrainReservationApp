@@ -29,4 +29,6 @@ public interface CoachServices {
 	 * @return The CoachDto with the specified coachId.
 	 */
 	CoachDto getCoachById(Integer coachId);
+
+	CoachDto resetCoach(Integer coachId);
 }

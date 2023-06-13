@@ -7,9 +7,6 @@ import jakarta.persistence.Id;
 import jakarta.persistence.ManyToOne;
 import lombok.Data;
 
-/**
- * The Seat entity represents a seat in a train coach in the Train Reservation Application.
- */
 @Entity
 @Data
 public class Seat {
