@@ -104,9 +104,11 @@ public class CoachServicesImpl implements CoachServices {
 	    ticketRepo.deleteAllByCoach(coach);
 
 	    for (Seat seat : coach.getSeats()) {
-	        seat.setIsBooked(false);
-	        seatRepo.save(seat);
-	        coach.setAvailableSeats(coach.getAvailableSeats()+1);
+	        if(seat.getIsBooked()) {
+	    		 seat.setIsBooked(false);
+	 	        seatRepo.save(seat);
+	 	        coach.setAvailableSeats(coach.getAvailableSeats()+1);
+	    	}
 	    }
 
 	    return modelMapper.map(coachRepo.save(coach), CoachDto.class);
